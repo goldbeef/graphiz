@@ -1,0 +1,138 @@
+digraph 
+{
+	size = "4, 4"
+	label = "demo1"
+	
+	//fontname 
+	//fontsize 
+	//fontcolor 
+
+	//labelloc = t //b 
+	//labeljust = l //l
+	// labelfontname 
+	// labelfontsize 
+	// labelfontcolor 
+	A [shape = box, peripheries = 2]
+	A -> B [weight = 2, style = dotted, 
+			color = red, label = "hello"]
+	B -> D 
+	A -> C -> D
+
+	E [shape = polygon, peripheries = 2, 
+		regular = true, sides = 4,
+		orientation = 15, skew = 0.5,
+		distortion = 0.5]
+
+	node [shape = record];
+	struct1 [shape = record, label = "<f0> left|<f1> mid\ dle|<f2> right"];
+	struct2 [shape = record, label = "<f0> one|<f1> two"];
+	struct3 [shape = record, label = "hello\nworld |{ b |{c|<here> d|e}| f}| g | h"];
+	struct1 -> struct2;
+	struct1 -> struct3;
+	
+	abc [shape=none, margin=0, label=<
+		<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="4">
+		<TR><TD ROWSPAN="3"><FONT COLOR="red">hello</FONT><BR/>world</TD>
+		<TD COLSPAN="3">b</TD>
+		<TD ROWSPAN="3" BGCOLOR="lightgrey">g</TD>
+		<TD ROWSPAN="3">h</TD>
+		</TR>
+		<TR><TD>c</TD>
+		<TD PORT="here">d</TD>
+		<TD>e</TD>
+		</TR>
+		<TR><TD COLSPAN="3">f</TD>
+		</TR>
+		</TABLE>>];
+
+	{
+		node [shape = plaintext]
+		past -> 1997 -> 2001 -> 2005
+		"test1"; "test2"; "test3"; "test4"; "test5"; "test6"
+	}
+
+	{
+		rank = same; past; "test1"; "test2"
+	}
+
+	{
+		rank = same; 1997; "test3"; "test4"
+	}
+	
+	{
+		rank = same; 2001; "test5"
+	}
+
+	{
+		rank = same; 2005; "test6"
+	}
+	
+	rankdir = LR
+	"test1" -> {"test3", "test4"}
+	"test2" -> {"test3", "test4"}
+	"test3" -> "test5"
+	"test4" -> "test6"
+	"test5" -> "test6"
+	
+	AA:n -> BB:n
+	CC [shape = record, label = "<f0> f0 | <f1> f1 | <f2> f2"]
+	DD [shape = record, label = "<f0> f0 | <f1> f1 | <f2> f2"]
+	CC:f0:e -> DD:f0:w
+	CC:f1:e -> DD:f2:w
+	
+	node0 [shap = record, label = "<f0> |<f1> f1|<f2> "]
+	node1 [shap = record, label = "<f0> |<f1> f1|<f2> "]
+	node0:f0 -> node1:f2
+	node0:f2 -> node1:f0
+
+	rankdir = TB
+	{
+		node [shape=record];
+		struct1 [shape=record,label="<f0> left|<f1> middle|<f2> right"];
+		struct2 [shape=record,label="<f0> one|<f1> two"];
+		struct3 [shape=record,label="hello\nworld |{ b |{c|<here> d|e}| f}| g | h"];
+		struct1:f1 -> struct2:f0;
+		struct1:f2 -> struct3:here;
+	}
+
+	rankdir = LR 
+	hashtable [shape = record, label = "<f0> |<f1> |<f2> |<f3> "]
+	hashitem1 [shape = record, label = "<prev>prev |<cur>cur |<next>next "]
+	hashitem2 [shape = record, label = "<prev>prev |<cur>cur |<next>next "]
+	hashitem3 [shape = record, label = "<prev>prev |<cur>cur |<next>next "]
+	hashitem4 [shape = record, label = "<prev>prev |<cur>cur |<next>next "]
+	hashitem5 [shape = record, label = "<prev>prev |<cur>cur |<next>next "]
+
+	hashtable:f0 -> hashitem1 
+	hashtable:f1 -> hashitem2 
+	hashitem1:next -> hashitem3:n 
+	hashitem2:next -> hashitem4:n
+	hashitem3:prev -> hashitem1:n 
+	hashitem4:prev -> hashitem2:n
+
+	rankdir = TB 
+
+	subgraph cluster1 
+	{
+		node [style = filled, color = white]
+		style = filled
+		color = lightgrey
+		PA -> PB -> PC 
+		label = "process #1"
+	}
+	
+	subgraph cluster2 
+	{
+		node [style = filled, color = blue]
+		color = blue
+		PA2 -> PB2 -> PC2 
+		label = "process #2"
+	}
+
+	start -> {PA, PA2} 
+	{PC, PC2} -> end
+
+	start [shape=Mdiamond];
+	end [shape=Msquare];
+}
+

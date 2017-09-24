@@ -1,0 +1,110 @@
+/*
+digraph 
+{
+	A -> B
+	A -> C
+	B -> D
+	C -> D
+}
+*/
+
+graph 
+{
+	size = "4,4"
+	bgcolor = yellow
+	struct3 [shape=record,label="hello\nworld |{ b |{c|d|e}| f}| g | h"];
+	struct2 [shape = record, skew = 0.5, label = "key1|key2|key3"]
+	A [shape = record, skew = 0.5, label = "<f0> key1| <f1> key2| <f3> key3"]
+	A -- B [weight = 25, style = dotted, color = red, label = "hello\nworld"]
+	A -- C
+	B -- D
+	C -- D
+	D -- {E, F}
+	//node [style=filled,color=".7 .3 1.0"] 
+	E -- H
+	
+	H -- I [dir = both] 
+	I -- J [dir = none]
+	J -- K [dir = back]
+	k -- L [dir = forward]
+
+	M [shape = polygon, sides = 5, peripheries = 3, color = lightblue, style = filled, distortion = .7, orientation = 15]
+
+	N [shape = record, label = "<f0> left|<f1> mid\ dle|<f2> right"]
+	
+	edge[decorate = true, labelfontcolor = blue, fontcolor = red]
+	O -- P [headlabel = "begin", taillabel = "tail", label = "test"]
+
+	Q [shape = none]
+
+	R [shape=none, margin=0, 
+		label=<  <TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="4"> 
+				<TR><TD>0</TD><TD>1</TD><TD>2</TD><TD>3</TD><TD>4</TD></TR> 
+				<TR><TD>0</TD><TD>1</TD><TD>2</TD><TD>3</TD><TD>4</TD></TR> 
+				<TR><TD>0</TD><TD>1</TD><TD>2</TD><TD>3</TD><TD>4</TD></TR> 
+				<TR><TD>0</TD><TD>1</TD><TD>2</TD><TD>3</TD><TD>4</TD></TR>
+				</TABLE>
+				>
+	]
+
+	edge [dir = forward]
+	rankdir = LR //RL, TB, BT 
+	{ 
+		node[shape = plaintext]    
+		1995 -- 1996 -- 1997 -- 1998 -- 1999 -- 2000 -- 2001
+	}
+
+	{
+		node[shape = box, style = filled]
+		WAR3 -- Xhero -- Footman -- DOTA 
+		WAR3 -- Battleship; 
+	}  
+	
+	{rank = same; 1996; WAR3;}  
+	{rank = same; 1998; Xhero; Battleship;} 
+	{rank = same; 1999; Footman;} 
+	{rank = same; 2001; DOTA;} 
+	
+	rankdir = TB
+	node[shape = box] 
+	c:n -- d[label = n] 
+	c1:ne -- d1[label = ne]
+	c2:e -- d2[label = e]
+	b:se -- a[label = se] 
+	c3:s -- d3[label = s] 
+	c4:sw -- d4[label = sw] 
+	c5:w -- d5[label = w]
+	c6:nw -- d6[label = nw] 
+
+	label = "Binary search tree"
+	node[shape = record]  
+	BA[label = "<f0> | <f1> BA |<f2> "] 
+	BB[label = "<f0> | <f1> BB |<f2> "] 
+	BC[label = "<f0> | <f1> BC |<f2> "]
+	BD[label = "<f0> | <f1> BD |<f2> "]
+	BE[label = "<f0> | <f1> BE |<f2> "]
+	BA:f0:sw -- BB:f1
+	BA:f2:se -- BC:f1
+	BB:f0:sw -- BD:f1
+	BB:f2:se -- BE:f1
+
+	nodesep=.05 
+	rankdir=LR
+	node [shape=record,width=.1,height=.1]
+	node0 [label = "<f0> |<f1> |<f2> |<f3> |<f4> |<f5> |<f6> | ", height=2.5]
+	node1 [label = "{<n> n14 | 719 |<p> }"]
+	node2 [label = "{<n> a1 | 805 |<q> }"]
+	node3 [label = "{<n> i9 | 718 |<p> }"]
+	node4 [label = "{<n> e5 | 989 |<p> }"]
+	node5 [label = "{<n> t20 | 959 |<p> }"]
+	node6 [label = "{<n> o15 | 794 |<p> }"]
+	node7 [label = "{<n> s19 | 659 |<p> }"]
+	node0:f0 -- node1:n
+	node0:f1 -- node2:n
+	node0:f2 -- node3:n
+	node0:f5 -- node4:n
+	node0:f6 -- node5:n
+	node2:q -- node6:n
+	node4:p -- node7:n 
+}
+

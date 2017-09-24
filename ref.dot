@@ -1,0 +1,5 @@
+digraph 
+{
+	size = "10, 10"
+	A [shape = none, image = "./guide.svg", label = ""]
+}

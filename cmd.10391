@@ -1,0 +1,110 @@
+dot draw graph in four-phrase
+	1. break any circles in input graph 
+	2. assign nodes to discrete ranks or levels
+	3. orders nodes within ranks to avoid crossings 
+	4. sets X coordi-nates of nodes to keep edges short
+	5. routes edge splines
+---------------------------------------------------------
+dot language
+	digraph
+	graph
+	subgraph
+	--------------------------
+	node 
+	edge 
+---------------------------------------------------------
+draw-attribute
+	www.graphviz.org/doc/info/attrs.html
+---------------------------------------------------------
+node-shape 
+	default 
+		shape=ellipse, width=.75, height=.5
+	--------------------------
+	optional-shapes
+		ellipse 
+		box 
+		circle 
+		record 
+		plaintext
+	--------------------------
+	tow-kind
+		record-based 
+			record, Mrecord
+				------------
+				rlabel -> field ( ’|’ field )*
+				boxLabel -> [ ’<’ string ’>’ ] [ string ]
+				field -> boxLabel | ’’ rlabel ’’
+		--------------------------
+		polygon-based 
+			other-shapes
+			------------
+			regular = true 
+---------------------------------------------------------
+label 
+	// fontname 
+	// fontsize 
+	// fontcolor 
+	
+	// label = "demo1"
+	// labelloc = t //b 
+	// labeljust = l //l
+
+	// labelfontname 
+	// labelfontsize 
+	// labelfontcolor 
+	// decorate 
+	// labelfloat 
+	// headlabel 
+	// taillabel 
+	// labelangle 
+	// labeldistance 
+	// 
+	----------------------------------
+	html-like lable 
+		label = <xxx>
+		shape = none
+		-------------
+		alter font and color at box-level
+		include image
+---------------------------------------------------------
+graph-style
+	color 
+	style 
+		dotted, dashed, dotted, bold, invis 
+		field, diagonals, rounded 
+		fillcolor 
+	dir 
+		forward, back, both, none 
+	arrowhead
+	arrowtail
+		normal, inv, dot, invdot, odot, invdot, none 
+	arrowsize
+	bgcolor
+---------------------------------------------------------
+draw-orientation-size-space 
+	nodesep 
+	ranksep
+	ratio
+---------------------------------------------------------
+node and edge placement 
+	rankdir 
+		LR, RL, TB, BT 
+	rank 
+		same, min, max, source, sink
+---------------------------------------------------------
+advanced-features
+	node-port 
+		n, ne, e, se, s, sw, w, nw
+		----------------------
+		specify port 
+			A -> B [headport = ne, tailport = nw] 
+			A:ne -> B:nw 
+	----------------------------------
+	clusters
+		subgraph clusterXXX
+		{
+			//labelloc
+			//labeljust 
+			//fillcolor
+		}
+		----------------------
