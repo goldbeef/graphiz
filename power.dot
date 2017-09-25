@@ -1,0 +1,37 @@
+digraph power
+{
+	label = "power"
+	rankdir = TB
+	edge [dir = both] 
+	node [shape = box]
+
+	{
+		pvpsvr, clustersvr, crossgamesvr
+	} -> gatewaysvr 
+
+	gatewaysvr -> 
+	{
+		dispsvr1, dispsvr2
+	}
+
+	dispsvr1 -> 
+	{
+		gamesvr1, guildsvr1, redisproxy1 
+	}
+	
+	dispsvr2 -> 
+	{
+		gamesvr2, guildsvr2, redisproxy2 
+	}
+
+	dispsvr1, dispsvr2 [color = blue, style = filled]
+	
+	/*
+	subgraph cluster1
+	{
+		rankdir = BT
+		start, end [shape = plaintext, lable = " "]
+		start -> end [label = "tbus"]
+	}
+	 */
+}

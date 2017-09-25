@@ -1,0 +1,42 @@
+digraph class  
+{
+	rankdir = BT
+	node [shape = record]
+    
+	Animal [
+            label = "{Animal |+ name : string\l+ age : int\l |+ die() : void\l}"
+    ]
+
+    Dog [
+            label = "{Dog |+ bark() : void\l}"
+    ]
+
+    Cat [
+            label = "{Cat |+ meow() : void\l}"
+    ]
+    edge [
+            arrowhead = "empty"
+    ]
+
+    Dog -> Animal
+    Cat -> Animal
+	
+	Dog -> IDog [style = dashed, arrowhead = empty]
+
+	People [
+    	label = "{People |+crossRiver(Boat boat)\l}"
+	]
+	People -> Boat[style = dashed, arrowhead = normal]
+	
+	Teacher [
+		label = "{Teacher|+Course\l}"
+	]
+	Teacher -> Course [arrowhead = normal]
+
+	Teacher [
+    label = "{Teacher|+Course\l+Students\l}"
+	]
+	Student-> Teacher[arrowhead=ediamond]
+
+	{Head, LeftLeg, RightLeg} -> Human [arrowhead = diamond]
+}
